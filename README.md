@@ -1,1 +1,1 @@
-# drf-gb
+Django rest_framework learning project
