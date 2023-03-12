@@ -5,6 +5,10 @@ from rest_framework.viewsets import ModelViewSet
 from .serializers import ProjectSerializer, ToDoSerializer
 from .models import Project, ToDo
 
+class ProjectViewSet(ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    
 from todoapp.filters import ToDoFilter, ProjectFilter
 
 class ProjectPagination(PageNumberPagination):
@@ -28,6 +32,7 @@ class ProjectViewSet(ModelViewSet):
 class ToDoPagination(PageNumberPagination):
     page_size = 20
 
+
 class ToDoViewSet(ModelViewSet):
     queryset =ToDo.objects.all()
     serializer_class = ToDoSerializer
@@ -43,3 +48,4 @@ class ToDoViewSet(ModelViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             return Response(status=status.HTTP_204_NO_CONTENT)
+
